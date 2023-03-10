@@ -8,10 +8,13 @@
     var now = Date.now()  /* 当前时间戳 */
     var interval = parseInt(now - pubTime)
     /* 发布时间超过指定时间（毫秒） */
-    if (interval > 0){ //3600*24*30*1000
+    if (interval > 3600*24*30*1000){ //3600*24*30*1000
       var days = parseInt(interval / 86400000)
-      posts[0].innerHTML = '<div class="note note-warning" style="font-size:0.9rem"><p>' +
-        '<div class="h6">文章時效性提示</div><p>這是一篇發佈於 ' + days + ' 天前的文章，部分信息可能已發生改變，請注意。' +
-        '</p></p></div>' + posts[0].innerHTML;
+      // posts[0].innerHTML = '<div class="note note-warning" style="font-size:0.9rem"><p>' +
+      //   '<div class="h6">文章時效性提醒</div><p>這是一篇發佈於 ' + days + ' 天前的文章，部分信息可能已發生改變，請注意。' +
+      //   '</p></p></div>' + posts[0].innerHTML;
+      posts[0].insertAdjacentHTML('afterbegin', '<div class="note note-warning" style="font-size:0.9rem"><p>' +
+      '<div class="h6">文章時效性提醒</div><p>這是一篇發佈於 ' + days + ' 天前的文章，部分信息可能已發生改變，請注意。' +
+      '</p></p></div>');
     }
   })();
